@@ -1,0 +1,13 @@
+<% books.each do |book| %>
+<div>
+  <p>投稿ユーザー画像：<%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p>タイトル：
+    <%= link_to book_path(book.id) do %>
+    <%= book.title %>
+    <% end %>
+  </p>
+  <p>感想：<%= book.body %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
+</div>
+<% end %>
+<%= paginate books %>
