@@ -5,5 +5,6 @@
 <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
 <label for="inputImage">ProfileImage</label>
 <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+<%= f.text_field :introduction, autofocus: true, id: "inputIntroduction", placeholer: "" %>
 <%= f.submit "変更を保存" %>
 <% end %>
