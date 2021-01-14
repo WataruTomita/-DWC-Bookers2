@@ -1,4 +1,3 @@
-<% books.each do |book| %>
 <div class="col-md-8 offset-md-1">
   <table class="table table-hover table-inverse">
     <thead>
@@ -9,6 +8,7 @@
       </tr>
     </thead>
     <tbody>
+      <% books.each do |book| %>
       <tr>
         <th scope="row">
           <%= attachment_image_tag book.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg" %>
@@ -22,8 +22,9 @@
           <%= book.body %>
         </td>
       </tr>
+      <% end %>
     </tbody>
-    <% end %>
+
   </table>
   <%= paginate books %>
 </div>
