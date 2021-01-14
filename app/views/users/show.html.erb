@@ -29,17 +29,10 @@
         <%= f.text_field :title %>
         <p>Opinion</p>
         <%= f.text_area :body %>
-        <%= f.submit '投稿', class: 'btn btn-success' %>
+        <%= f.submit 'Create Book', class: 'btn btn-success' %>
         <% end %>
       </div>
-      <%
-=begin%>
-      <div>
-        <%= render 'books/new', books: @books %>
-      </div>
-      <%
-=end%>
     </div>
+    <%= render 'books/list', books: @books %>
   </div>
 </div>
-<%= render 'books/list', books: @books %>
