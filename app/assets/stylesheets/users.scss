@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #error_explanation {
-  color:red;
+  color: red;
 }
-div.field div.actions {
-  mergin-bottom: 10px;
+div.field {
+  margin-bottom: 10px;
+}
+div.actions {
+  margin-bottom: 10px;
 }

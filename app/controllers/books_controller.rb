@@ -9,12 +9,13 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book)
     else
-      render :new
+      render :book_path
     end
   end
 
   def index
     @books = Book.page(params[:page]).reverse_order
+    @book = Book.new
   end
 
   def show
@@ -29,7 +30,7 @@ class BooksController < ApplicationController
 
 private
 def book_params
-  params.require(:book).permit(:title, :body)
+  params.permit(:title, :body)
 end
 
 end

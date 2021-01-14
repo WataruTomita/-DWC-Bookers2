@@ -29,7 +29,7 @@
               <%= link_to " Users", user_path(current_user.id), class: 'fas fa-users nav-link text-light' %>
             </li>
             <li>
-              <%= link_to " Books", new_book_path, class: 'fas fa-book-open nav-link text-light' %>
+              <%= link_to " Books", books_path, class: 'fas fa-book-open nav-link text-light' %>
             </li>
             <li>
               <%= link_to " logout", destroy_user_session_path, class: 'fas fa-sign-out-alt nav-link text-light', method: :delete  %>
@@ -39,7 +39,7 @@
               <%= link_to " About", new_user_registration_path, class: 'fas fa-link nav-link text-light'%>
             </li>
             <li>
-              <%= link_to " Sign up", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %>
+              <%= link_to " sign up", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %>
             </li>
             <li>
               <%= link_to " login", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %>
@@ -51,6 +51,11 @@
     </nav>
   </header>
   <main class="mb-auto">
+    <div>
+      <% if flash[:notice] %>
+      <p class="flash"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
     <%= yield %>
   </main>
   <footer>
