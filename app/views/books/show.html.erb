@@ -1,10 +1,34 @@
-<div class="post-body">
-  <p>タイトル：<%= @book.title %></p>
-  <p>説明：<%= @book.body %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <p>投稿日時：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @book .user == current_user %>
-  <%= link_to "編集", edit_book_path(@book) %>
-  <%= link_to "削除", book_path(@book), method: :delete %>
-  <% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+        <%= render partial: 'books/side', locals: {book:@book, user:current_user} %>
+    </div>
+      <div class="col-md-8 offset-md-1 post-body">
+        <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %><br>
+                <%= link_to @book.user.name, user_path(@book.user.id) %>
+              </td>
+              <td>
+                <%= @book.title %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-sm btn-success' %>
+              </td>
+              <td>
+                <%= link_to "Destroy", book_path(@book), method: :delete, class: 'class="btn btn-sm btn-danger' %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
 </div>
+
+

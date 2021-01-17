@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   post 'users/:id' => 'books#create'
   post 'users' => 'books#create'
+  # get 'users/:id' => 'users#show', as: 'home'
   resources :books
   resources :users,　only: [:show, :edit, :update]
   # only: [:show, :edit, :update]

@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.page(params[:page]).reverse_order
+    @books = Book.page(params[:page])
     @books = Book.all
     @book = Book.new
     # kaminari 動作用
@@ -22,6 +22,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @user = current_user
   end
 
   def edit
