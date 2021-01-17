@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'books#top'
   # get '/about', to: 'books#about'
   devise_for :users
-  # post 'users/:id' => 'books#create'
+  post 'users/:id' => 'books#create'
+  post 'users' => 'books#create'
   resources :books
   resources :users
   # only: [:show, :edit, :update]
