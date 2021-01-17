@@ -3,7 +3,7 @@
     <h2>Books</h2>
     <thead>
       <tr>
-        <th>#</th>
+        <th class="photo"></th>
         <th>Title</th>
         <th>Opinion</th>
       </tr>
@@ -11,7 +11,7 @@
     <tbody>
       <% books.each do |book| %>
       <tr>
-        <th scope="row">
+        <th>
           <%= attachment_image_tag book.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg" %>
         </th>
         <td>
