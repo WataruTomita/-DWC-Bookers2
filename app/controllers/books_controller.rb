@@ -15,6 +15,9 @@ class BooksController < ApplicationController
     @books = Book.page(params[:page]).reverse_order
     @books = Book.all
     @book = Book.new
+    # kaminari 動作用
+    @books = Book.page(params[:page])
+    # @books = @books.page(params[:page])
   end
 
   def show
@@ -41,5 +44,4 @@ private
   def book_params
     params[:book].permit(:title, :body, :user_id)
   end
-
 end
