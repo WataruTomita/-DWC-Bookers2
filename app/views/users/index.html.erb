@@ -3,33 +3,32 @@
     <div class="col-md-3">
       <%= render partial: 'users/side', locals:{book: @book, user: current_user} %>
     </div>
-
     <div class="col-md-8 offset-md-1">
       <table class="table">
         <h1>Users</h1>
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>name</th>
-              <th></th>
-            </tr>
-          </thead>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
 
-          <% @users.each do |user| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
-              </td>
-              <td>
-                <%= user.name %>
-              </td>
-              <td>
-                <%= link_to "show", user_path(user.id), class: "user_#{user.id}" %>
-              </td>
-            </tr>
-          </tbody>
-          <% end %>
+        <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+            </td>
+            <td>
+              <%= user.name %>
+            </td>
+            <td>
+              <%= link_to "show", user_path(user.id), class: "user_#{user.id}" %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
       </table>
       <%= paginate @users %>
     </div>
