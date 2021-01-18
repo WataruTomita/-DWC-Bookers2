@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    @user = current_user
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
@@ -13,17 +14,17 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.page(params[:page])
+    # @books = Book.page(params[:page])
     @books = Book.all
     @book = Book.new
-    # kaminari 動作用
+    # kaminari 動作用 削除しないこと
     @books = Book.page(params[:page])
     # @books = @books.page(params[:page])
   end
 
   def show
     @book = Book.find(params[:id])
-    @user = current_user
+    # @user = current_user
   end
 
   def edit
@@ -44,6 +45,9 @@ class BooksController < ApplicationController
 
 private
   def book_params
-    params[:book].permit(:title, :body, :user_id)
+    # 修正作業中
+    # params.require(:book).permit(:title, :body) で投稿＆編集は可能
+    # ただし/users/:idからの新規投稿はエラー
+    params.require(:book).permit(:title, :body)
   end
 end
