@@ -15,25 +15,18 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
     else
-      # できればrenderに直したい･･･恐らくそうしないとerror messageは表示できない
       render action: :index
-      # redirect_to books_path
     end
   end
 
   def index
-    # @books = Book.page(params[:page])
     @books = Book.all
     @book = Book.new
-    # kaminari 動作用 削除しないこと↓
-    # @books = Book.page(params[:page])
-    # @books = @books.page(params[:page])
   end
 
   def show
     @book = Book.find(params[:id])
     @book_new = Book.new
-    # @user = current_user
   end
 
   def edit
@@ -63,9 +56,6 @@ class BooksController < ApplicationController
 
 private
   def book_params
-    # 修正作業中
-    # params.require(:book).permit(:title, :body) で投稿＆編集は可能
-    # ただし/users/:idからの新規投稿はエラー
     params.require(:book).permit(:title, :body)
   end
 end
