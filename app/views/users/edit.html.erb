@@ -1,7 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>プロフィール編集</h2>
+      <h2>User info</h2>
+      <%# エラーメッセージ %>
+      <% if @user.errors.any? %>
+      <div>
+        <a><%= @user.errors.count %> error prohibited this obj from being saved:</a>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li class="alert"><%= message %></li>
+            <% end %>
+          </ul>
+      </div>
+      <% end %>
+      <%# エラーメッセージここまで %>
       <%= form_with model:@user, local:true do |f| %>
       <div class="form-group">
         <label for="imputName">Name</label><br />
