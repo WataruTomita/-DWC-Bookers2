@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home/about', to: 'homes#about'
   devise_for :users
   post 'users/:id' => 'books#create'
+  post 'books/:id' => 'books#create'
   # post 'users' => 'books#create'
   # get 'users/:id' => 'users#show', as: 'home'
   resources :books
