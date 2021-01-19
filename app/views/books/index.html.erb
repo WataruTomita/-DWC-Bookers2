@@ -20,6 +20,6 @@
     <div class="col-md-3">
         <%= render partial: 'books/side', locals: {book:@book, user:current_user} %>
     </div>
-        <%= render partial: 'books/list', locals: {books: @books} %>
+        <%= render partial: 'books/list', locals: {books: @books, user: @book.user} %>
   </div>
 </div>
