@@ -1,6 +1,18 @@
 <div class="container">
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h1>Editing Book</h1>
+    <%# エラーメッセージ %>
+    <% if @book.errors.any? %>
+    <div>
+      <a><%= @book.errors.count %> errors prohibited this book from being saved:</a>
+        <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li class="alert"><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+<%# エラーメッセージここまで %>
     <%= form_with model: @book, local: true do |f| %>
     <div class="form-group">
       <label class="book_title">Title</label>

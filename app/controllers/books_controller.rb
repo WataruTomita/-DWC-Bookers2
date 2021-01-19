@@ -6,6 +6,8 @@ class BooksController < ApplicationController
   end
 
   def create
+    @books = Book.all
+    @book = Book.new
     @user = current_user
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -14,8 +16,8 @@ class BooksController < ApplicationController
       redirect_to book_path(@book)
     else
       # できればrenderに直したい･･･恐らくそうしないとerror messageは表示できない
-      # render action: :index
-      redirect_to books_path
+      render action: :index
+      # redirect_to books_path
     end
   end
 
