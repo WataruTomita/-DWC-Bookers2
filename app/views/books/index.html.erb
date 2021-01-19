@@ -3,6 +3,18 @@
 <p class="flash"><%= flash[:notice] %></p>
 <% end %>
 <!-- 通知ここまで -->
+<%# エラーメッセージ %>
+<% if @book.errors.any? %>
+<div>
+  <a><%= @book.errors.count %> errors prohibited this book from being saved:</a>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li class="alert"><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<%# エラーメッセージここまで %>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
